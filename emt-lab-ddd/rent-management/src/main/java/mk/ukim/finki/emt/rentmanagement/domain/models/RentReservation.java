@@ -5,6 +5,7 @@ import mk.finki.ukim.emt.sharedkernel.domain.base.AbstractEntity;
 import mk.finki.ukim.emt.sharedkernel.domain.financial.Money;
 import mk.ukim.finki.emt.rentmanagement.domain.valueobjects.Location;
 import mk.ukim.finki.emt.rentmanagement.domain.valueobjects.ReservationState;
+import mk.ukim.finki.emt.rentmanagement.domain.valueobjects.UserId;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,6 +13,8 @@ import java.util.Set;
 @Entity
 @Table(name = "rent_reservation")
 public class RentReservation extends AbstractEntity<RentReservationId> {
+    @AttributeOverride(name="id", column = @Column(name="user_id"))
+    private UserId userId;
 
     private LocalDate reservationStartDate;
 
