@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/shared-kernel/pom.xml" />
         <option value="$PROJECT_DIR$/vehicle-catalog/pom.xml" />
         <option value="$PROJECT_DIR$/rent-management/pom.xml" />
+        <option value="$PROJECT_DIR$/user-management/pom.xml" />
       </list>
     </option>
   </component>

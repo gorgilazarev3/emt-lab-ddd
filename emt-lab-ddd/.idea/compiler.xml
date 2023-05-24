@@ -10,6 +10,7 @@
         <module name="shared-kernel" />
         <module name="vehicle-catalog" />
         <module name="rent-management" />
+        <module name="user-management" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="rent-management" options="-parameters" />
       <module name="shared-kernel" options="-parameters" />
+      <module name="user-management" options="-parameters" />
       <module name="vehicle-catalog" options="-parameters" />
     </option>
   </component>

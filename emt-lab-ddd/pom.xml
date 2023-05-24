@@ -29,5 +29,6 @@
     <module>shared-kernel</module>
     <module>vehicle-catalog</module>
     <module>rent-management</module>
+    <module>user-management</module>
   </modules>
 </project>
