@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.rentmanagement.domain.models;
 
 import jakarta.persistence.*;
 import jdk.jfr.Enabled;
+import lombok.Getter;
 import lombok.NonNull;
 import mk.finki.ukim.emt.sharedkernel.domain.base.AbstractEntity;
 import mk.finki.ukim.emt.sharedkernel.domain.base.DomainObjectId;
@@ -15,6 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "rent_reservation_day")
+@Getter
 public class RentReservationDay extends AbstractEntity<RentReservationDayId> {
 
     @AttributeOverride(name = "id", column = @Column(name = "vehicle_id", nullable = false))

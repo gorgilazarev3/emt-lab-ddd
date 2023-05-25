@@ -13,6 +13,7 @@ import mk.ukim.finki.emt.rentmanagement.domain.valueobjects.UserId;
 import mk.ukim.finki.emt.rentmanagement.domain.valueobjects.Vehicle;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -52,7 +53,7 @@ public class RentReservation extends AbstractEntity<RentReservationId> {
     })
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<RentReservationDay> reservationDays;
+    private Set<RentReservationDay> reservationDays = new HashSet<>();;
 
     public Money totalPrice() {
         return reservationDays.stream().map(RentReservationDay::totalPricePerDay).reduce(new Money(currency, 0),Money::add);
@@ -72,6 +73,10 @@ public class RentReservation extends AbstractEntity<RentReservationId> {
         return reservationDays.stream().filter(rd -> rd.getId().equals(rentReservationDayId)).findFirst().orElseThrow(ReservationDayIdNotExistException::new);
     }
 
+    public Set<RentReservationDay> getReservationDays() {
+        return reservationDays;
+    }
+
     protected RentReservation() {
         super(DomainObjectId.randomId(RentReservationId.class));
     }
@@ -79,10 +84,14 @@ public class RentReservation extends AbstractEntity<RentReservationId> {
     public RentReservation(UserId userId, LocalDate reservationStartDate, LocalDate reservationEndDate, Location pickupLocation, Location dropOffLocation, Currency currency) {
         super(DomainObjectId.randomId(RentReservationId.class));
         this.userId = userId;
+        if(!reservationStartDate.isBefore(reservationEndDate)) {
+            throw new IllegalArgumentException();
+        }
         this.reservationStartDate = reservationStartDate;
         this.reservationEndDate = reservationEndDate;
         this.currency = currency;
         this.pickupLocation = pickupLocation;
         this.dropOffLocation = dropOffLocation;
+        this.reservationDays = new HashSet<>();
     }
 }

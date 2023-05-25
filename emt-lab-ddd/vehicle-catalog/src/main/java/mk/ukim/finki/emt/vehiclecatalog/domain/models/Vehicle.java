@@ -1,6 +1,7 @@
 package mk.ukim.finki.emt.vehiclecatalog.domain.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import mk.finki.ukim.emt.sharedkernel.domain.base.AbstractEntity;
 import mk.finki.ukim.emt.sharedkernel.domain.base.DomainObjectId;
 import mk.ukim.finki.emt.vehiclecatalog.domain.valueobjects.Fuel;
@@ -11,6 +12,7 @@ import mk.ukim.finki.emt.vehiclecatalog.domain.valueobjects.VehicleType;
 
 @Entity
 @Table(name = "vehicle")
+@Getter
 public class Vehicle extends AbstractEntity<VehicleId> {
 
     @AttributeOverrides({

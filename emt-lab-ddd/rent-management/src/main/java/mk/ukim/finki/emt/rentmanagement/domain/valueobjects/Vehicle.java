@@ -1,6 +1,9 @@
 package mk.ukim.finki.emt.rentmanagement.domain.valueobjects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import mk.finki.ukim.emt.sharedkernel.domain.base.ValueObject;
 
@@ -31,6 +34,21 @@ public class Vehicle implements ValueObject {
         this.fuel  = null;
     }
 
-
+    @JsonCreator
+    public Vehicle(@JsonProperty("id") VehicleId id,
+                   @JsonProperty("vehicleModel") VehicleModel vehicleModel,
+                   @JsonProperty("numberSeats") int numberSeats,
+                   @JsonProperty("brandId") BrandId brandId,
+                   @JsonProperty("vehicleClass") VehicleClass vehicleClass,
+                   @JsonProperty("vehicleType") VehicleType vehicleType,
+                   @JsonProperty("fuel") Fuel fuel) {
+        this.id = id;
+        this.vehicleModel = vehicleModel;
+        this.numberSeats = numberSeats;
+        this.brandId = brandId;
+        this.vehicleClass = vehicleClass;
+        this.vehicleType = vehicleType;
+        this.fuel = fuel;
+    }
 
 }

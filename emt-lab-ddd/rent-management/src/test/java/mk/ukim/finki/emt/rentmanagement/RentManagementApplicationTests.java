@@ -10,4 +10,5 @@ class RentManagementApplicationTests {
     void contextLoads() {
     }
 
+
 }
