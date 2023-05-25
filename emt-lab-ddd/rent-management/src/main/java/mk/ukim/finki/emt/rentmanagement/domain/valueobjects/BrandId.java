@@ -1,8 +1,8 @@
 package mk.ukim.finki.emt.rentmanagement.domain.valueobjects;
 
-import jakarta.persistence.Embeddable;
+import lombok.NonNull;
 import mk.finki.ukim.emt.sharedkernel.domain.base.DomainObjectId;
 
+public class BrandId extends DomainObjectId {
 
-public class VehicleId extends DomainObjectId {
 }

@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.vehiclecatalog.domain.models;
 
 import jakarta.persistence.*;
 import mk.finki.ukim.emt.sharedkernel.domain.base.AbstractEntity;
+import mk.finki.ukim.emt.sharedkernel.domain.base.DomainObjectId;
 import mk.ukim.finki.emt.vehiclecatalog.domain.valueobjects.Fuel;
 import mk.ukim.finki.emt.vehiclecatalog.domain.valueobjects.VehicleClass;
 import mk.ukim.finki.emt.vehiclecatalog.domain.valueobjects.VehicleModel;
@@ -34,4 +35,19 @@ public class Vehicle extends AbstractEntity<VehicleId> {
             @AttributeOverride(name="consumption", column = @Column(name="fuel_consumption"))
     })
     private Fuel fuel;
+
+    protected Vehicle() {
+        super(DomainObjectId.randomId(VehicleId.class));
+    }
+
+    public static Vehicle build(BrandId brandId, VehicleModel vehicleModel, VehicleClass vehicleClass, VehicleType vehicleType, Fuel fuel, int numberSeats) {
+        Vehicle v = new Vehicle();
+        v.brandId = brandId;
+        v.vehicleModel = vehicleModel;
+        v.vehicleClass = vehicleClass;
+        v.vehicleType = vehicleType;
+        v.fuel = fuel;
+        v.numberSeats = numberSeats;
+        return v;
+    }
 }
